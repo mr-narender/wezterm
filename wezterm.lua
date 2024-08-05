@@ -1,13 +1,15 @@
 local wezterm = require("wezterm")
+local lib = require("config.init")
+
 
 -- Load configuration modules
-local window = require("window")
-local colors = require("colors")
-local font = require("font")
-local keybindings = require("keybindings")
-local mousebindings = require("mousebindings")
-local launch_menu = require("launch_menu")
-local tab_title = require("tab_title")
+local window = lib.window
+local colors = lib.colors
+local font = lib.font
+local keybindings = lib.keybindings
+local mousebindings = lib.mousebindings
+local launch_menu = lib.launch_menu
+local tab_title = lib.tab_title
 
 local config = {
     check_for_updates = true,
@@ -17,7 +19,7 @@ local config = {
     exit_behavior = "Close",
     default_prog = { 'pwsh.exe', '-NoLogo' },
     tab_bar_at_bottom = false,
-    use_fancy_tab_bar = false,
+    use_fancy_tab_bar = true,
     hide_tab_bar_if_only_one_tab = false,
     set_environment_variables = {},
 }

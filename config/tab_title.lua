@@ -18,7 +18,9 @@ local function format_tab_title(tab, tabs, panes, config, hover, max_width)
     if #title > max_len then
         title = title:sub(1, max_len - 1) .. "…"
     end
-    return { { Text = "     " .. title .. "     " } }
+    return {
+        { Text = " 🖥️ " .. title .. " " },
+    }
 end
 
 return format_tab_title
