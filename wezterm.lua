@@ -1,15 +1,15 @@
 local wezterm = require("wezterm")
-local lib = require("config.init")
+local core = require("core")
 
 
 -- Load configuration modules
-local window = lib.window
-local colors = lib.colors
-local font = lib.font
-local keybindings = lib.keybindings
-local mousebindings = lib.mousebindings
-local launch_menu = lib.launch_menu
-local tab_title = lib.tab_title
+local window = core.window
+local colors = core.colors
+local font = core.font
+local keybindings = core.keybindings
+local mousebindings = core.mousebindings
+local launch_menu = core.launch_menu
+local tab_title = core.tab_title
 
 local config = {
     check_for_updates = true,
@@ -22,6 +22,32 @@ local config = {
     use_fancy_tab_bar = true,
     hide_tab_bar_if_only_one_tab = false,
     set_environment_variables = {},
+    window_frame = {
+        border_left_width = 2,
+        border_right_width = 2,
+        border_top_height = 2,
+        border_bottom_height = 2,
+        active_titlebar_bg = '#090909',
+        -- font = fonts.font,
+        -- font_size = fonts.font_size,
+    },
+    animation_fps = 60,
+    max_fps = 60,
+    tab_max_width = 25,
+    show_tab_index_in_tab_bar = false,
+    -- window
+    window_padding = {
+        left = 5,
+        right = 10,
+        top = 12,
+        bottom = 7,
+    },
+    window_close_confirmation = 'NeverPrompt',
+
+    inactive_pane_hsb = {
+        saturation = 0.9,
+        brightness = 0.65,
+    },
 }
 
 -- Merge configurations from modules
