@@ -1,7 +1,13 @@
 local wezterm = require("wezterm")
 
 local keybindings = {
-    keys = {{
+    keys = {
+        {
+      key = 'k',
+      mods = 'CTRL',
+      action = wezterm.action.SendString '\x0c',
+    },
+        {
         key = "q",
         mods = "CTRL",
         action = wezterm.action.QuitApplication

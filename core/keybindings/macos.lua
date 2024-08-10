@@ -2,6 +2,10 @@ local wezterm = require("wezterm")
 
 local keybindings = {
     keys = {{
+        key = 'k',
+        mods = 'CMD',
+        action = wezterm.action.SendString '\x0c'
+    }, {
         key = "q",
         mods = "CMD",
         action = wezterm.action.QuitApplication
