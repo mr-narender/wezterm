@@ -1,6 +1,6 @@
-local colors = {
-    color_scheme = "Catppuccin Mocha",
-    inactive_pane_hsb = { hue = 1.0, saturation = 1.0, brightness = 1.0 },
+local font = {
+    font_size = 16.0,
+
 }
 
-return colors
+return font

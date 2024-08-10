@@ -13,8 +13,8 @@ local mousebindings = {
             action = wezterm.action.OpenLinkAtMouseCursor
         },
         {
-            event = { Down = { streak = 1, button = 'Left' } },
-            mods = 'CTRL',
+            event = { Down = { streak = 1, button = "Left" } },
+            mods = "CTRL",
             action = wezterm.action.Nop
         }
     },

@@ -1,33 +1,41 @@
 local wezterm = require("wezterm")
-local platform = require('core.platform')()
+local helper = require("core.helper")
 
-local options = {
-    default_prog = {},
-    launch_menu = {},
+local os_name = helper.get_os()
+-- print("Operating System: " .. os_name)
+
+local launch_menu = {
+    launch_menu = {}
 }
 
-
-if platform.is_win then
-    options.default_prog = { 'pwsh', "-NoLogo" }
-    options.launch_menu = {
-        { label = 'PowerShell Core', args = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-NoLogo" } },
-        { label = 'Command Prompt',  args = { 'cmd' } },
-        { label = 'Nushell',         args = { 'nu' } },
-    }
-elseif platform.is_mac then
-    options.default_prog = { '/opt/homebrew/bin/zsh', '-l' }
-    options.launch_menu = {
-        { label = 'Bash',    args = { 'bash', '-l' } },
-        { label = 'Nushell', args = { '/opt/homebrew/bin/nu', '-l' } },
-        { label = 'Zsh',     args = { 'zsh', '-l' } },
-    }
-elseif platform.is_linux then
-    options.default_prog = { 'zsh', '-l' }
-    options.launch_menu = {
-        { label = 'Bash', args = { 'bash', '-l' } },
-        { label = 'Zsh',  args = { 'zsh', '-l' } },
-    }
+if os_name == "Windows" then
+    if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+        table.insert(launch_menu.launch_menu, {
+            label = "PowerShell",
+            args = {"C:\\Program Files\\PowerShell\\7\\pwsh.exe"}
+        })
+        table.insert(launch_menu.launch_menu, {
+            label = "Command Prompt",
+            args = {"cmd.exe"}
+        })
+        table.insert(launch_menu.launch_menu, {
+            label = "PowerShell 7",
+            args = {"pwsh.exe", "-NoLogo"}
+        })
+        table.insert(launch_menu.launch_menu, {
+            label = "Git Bash",
+            args = {"C:\\Program Files\\Git\\bin\\bash.exe"}
+        })
+    else
+        table.insert(launch_menu.launch_menu, {
+            label = "fish",
+            args = {"fish", "-l"}
+        })
+        table.insert(launch_menu.launch_menu, {
+            label = "zsh",
+            args = {"zsh", "-l"}
+        })
+    end
 end
 
-
-return options
+return launch_menu

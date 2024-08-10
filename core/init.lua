@@ -14,5 +14,5 @@ return {
     keybindings = keybindings,
     mousebindings = mousebindings,
     launch_menu = launch_menu,
-    tab_title = tab_title,
+    tab_title = tab_title
 }
